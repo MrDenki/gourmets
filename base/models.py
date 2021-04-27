@@ -2,18 +2,24 @@ from django.db import models
 
 
 class User(models.Model):
-    email = models.EmailField()
-    login = models.CharField(max_length=50, verbose_name='Логин', unique=True)
+    email = models.EmailField(unique=True)
+    login = models.CharField(max_length=50, verbose_name='Логин', unique=True, null=True, blank=True)
     password = models.CharField(max_length=50, verbose_name='Пароль')
-    photo = models.ImageField()
+    name = models.CharField(max_length=50, verbose_name='Имя пользователя')
     date_create = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(null=True, blank=True, auto_now=True)
+
+
+class CategoriesOfIngredients(models.Model):
+    name = models.CharField(max_length=256, verbose_name='Наименование категории', unique=True)
 
 
 class Ingredients(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование продукта', unique=True)
+    categoryOfIngredient = models.ForeignKey(CategoriesOfIngredients, on_delete=models.DO_NOTHING, verbose_name='Наименование категории ингредиента')
 
 
-class Category(models.Model):
+class CategoriesOfDishes(models.Model):
     name = models.CharField(max_length=255, verbose_name='Категория', unique=True)
 
 
@@ -24,7 +30,7 @@ class Recipes(models.Model):
     picture = models.ImageField()
     date_create = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Автор рецепта', related_name='users')
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, verbose_name='Наименование категории')
+    dishCategory = models.ForeignKey(CategoriesOfDishes, on_delete=models.DO_NOTHING, verbose_name='Наименование категории блюда')
     favourites = models.ManyToManyField(User, verbose_name='Сохраненный рецепт')
     ingredients = models.ManyToManyField(Ingredients, verbose_name='Ингредиенты в рецепте')
 

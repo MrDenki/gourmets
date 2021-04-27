@@ -4,11 +4,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from gourmets import settings
 
-from base.views import index, registration
+from base.views import index, registration, profile, recipe
 
 urlpatterns = [
     path('', index, name='home'),
-    path('registration/', registration, name='registration')
+    path('registration', registration, name='registration'),
+    path('profile', profile, name='profile'),
+    path('select_ingredients', recipe, name='recipe')
 ] + staticfiles_urlpatterns()
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
