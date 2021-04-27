@@ -17,3 +17,24 @@
     margin-top: 3%;
     font-family: Montserrat;
 }
+=======
+#index_img_arrow{
+    animation: bobble 2s infinite;
+}
+
+
+@keyframes bobble {
+    0% {
+        transform: translate3d(0%, 0%, 0%);
+        animation-timing-function: ease-in;
+    }
+
+    50% {
+        transform: translate3d(0%, 10%, 0px);
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        transform: translate3d(0%, 0%, 0%);
+    }
+}
