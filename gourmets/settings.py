@@ -130,3 +130,16 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
+
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "IGourmet@yandex.ru"
+EMAIL_HOST_PASSWORD = "Gourmet"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

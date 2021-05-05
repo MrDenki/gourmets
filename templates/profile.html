@@ -5,9 +5,30 @@
     <title>Профиль</title>
 </head>
 <body>
-<form action="" method="get" enctype="multipart/form-data">
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
 </form>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<a href="{% url 'home' %}">
+    <input type="image" src="../media/cross1.png" id="reg_button_close"
+           style="outline: none; border-color: transparent; box-shadow: none; ">
+</a>
+<br>
+<p><a href="{% url 'logoutuser' %}">Выход</a></p>
 </body>
 </html>

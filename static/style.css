@@ -17,11 +17,10 @@
     margin-top: 3%;
     font-family: Montserrat;
 }
-=======
+
 #index_img_arrow{
     animation: bobble 2s infinite;
 }
-
 
 @keyframes bobble {
     0% {

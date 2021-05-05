@@ -1,11 +1,11 @@
 from django.db import models
 
 
-class User(models.Model):
+class Users(models.Model):
     email = models.EmailField(unique=True)
     login = models.CharField(max_length=50, verbose_name='Логин', unique=True, null=True, blank=True)
-    password = models.CharField(max_length=50, verbose_name='Пароль')
-    name = models.CharField(max_length=50, verbose_name='Имя пользователя')
+    password = models.CharField(max_length=10,verbose_name='Пароль')
+    username = models.CharField(max_length=50, verbose_name='Имя пользователя')
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(null=True, blank=True, auto_now=True)
 
@@ -16,7 +16,7 @@ class CategoriesOfIngredients(models.Model):
 
 class Ingredients(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование продукта', unique=True)
-    categoryOfIngredient = models.ForeignKey(CategoriesOfIngredients, on_delete=models.DO_NOTHING, verbose_name='Наименование категории ингредиента')
+    categoryOfIngredient = models.ForeignKey(CategoriesOfIngredients, on_delete=models.DO_NOTHING, verbose_name='Наименование категории ингредиента', null=True, blank=True)
 
 
 class CategoriesOfDishes(models.Model):
@@ -26,18 +26,18 @@ class CategoriesOfDishes(models.Model):
 class Recipes(models.Model):
     describe = models.CharField(max_length=512, verbose_name='Описание')
     timeOfCooking = models.IntegerField()
-    rating = models.ImageField(max_length=5)
+    rating = models.IntegerField()
     picture = models.ImageField()
     date_create = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Автор рецепта', related_name='users')
+    user = models.ForeignKey(Users, on_delete=models.DO_NOTHING, verbose_name='Автор рецепта', related_name='users')
     dishCategory = models.ForeignKey(CategoriesOfDishes, on_delete=models.DO_NOTHING, verbose_name='Наименование категории блюда')
-    favourites = models.ManyToManyField(User, verbose_name='Сохраненный рецепт')
+    favourites = models.ManyToManyField(Users, verbose_name='Сохраненный рецепт')
     ingredients = models.ManyToManyField(Ingredients, verbose_name='Ингредиенты в рецепте')
 
 
 class Comments(models.Model):
     content = models.CharField(max_length=512, verbose_name='Текст')
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Автор комментария')
+    user = models.ForeignKey(Users, on_delete=models.DO_NOTHING, verbose_name='Автор комментария')
     recipes = models.ForeignKey(Recipes, on_delete=models.CASCADE, verbose_name='Комментарий к рецепту')
 
 
