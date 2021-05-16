@@ -17,9 +17,12 @@
     margin-top: 3%;
     font-family: Montserrat;
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 #index_img_arrow{
-    animation: bobble 2s infinite;
+    animation: bobble 1.4s infinite;
 }
 
 @keyframes bobble {
