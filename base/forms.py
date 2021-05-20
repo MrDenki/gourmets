@@ -23,3 +23,4 @@ class ProfileFrom(forms.ModelForm):
             'password': forms.PasswordInput(),
             'login': forms.TextInput()
         }
+

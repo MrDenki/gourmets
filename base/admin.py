@@ -11,4 +11,5 @@ admin.site.register(CategoriesOfDishes)
 admin.site.register(Recipes)
 admin.site.register(Comments)
 admin.site.register(StepOfCooking)
+admin.site.register(recipesIngredients)
 

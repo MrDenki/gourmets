@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепт</title>
+</head>
+<body>
+<div>
+    <img src="{{ recIngr.0.recipes.picture }}" alt="" style="width: 300px">
+    <p>{{ recIngr.0.recipes.title }}</p>
+    <p>{{ recIngr.0.recipes.describe }}</p>
+    {% for foo in recIngr %}
+        <br>
+        <b>{{ foo.ingredients.name }} - </b>
+        {{ foo.amount }}
+    {% endfor %}
+
+    {% for item in steps %}
+        <br>
+        <img src="{{ item.photo }}" alt="">
+        {{ item.step }}
+        {{ item.describe }}
+    {% endfor %}
+</div>
+</body>
+</html>

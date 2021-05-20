@@ -10,7 +10,7 @@ from base.forms import RegistrationForm, ProfileFrom
 from django.contrib.auth import authenticate, login, logout
 
 
-from base.models import Users
+from base.models import Users, Recipes, Ingredients, recipesIngredients, StepOfCooking
 
 
 def index(request):
@@ -39,7 +39,6 @@ def registration(request):
             else:
                 django_user.save()
                 user.save()
-
                 subject = """Подтверждение почты"""
                 content = f'Мы рады, что зарегистрировались на нашем сайте!\n' \
                           f'Ваш логин:\t{user.login}\n' \
@@ -67,8 +66,15 @@ def authentication(request):
     return render(request, 'index.html', context=locals())
 
 # @login_required() погуглить как использовать
-def recipe(request):
+def all_recipes(request):
+    reipes = Recipes.objects.all().order_by('id')
     return render(request, 'select_ingredients.html', context=locals())
+
+
+def recipe(request, id):
+    recIngr = recipesIngredients.objects.filter(recipes_id=id)
+    steps = StepOfCooking.objects.filter(recipes_id=id).order_by('step')
+    return render(request, 'recipe.html', context=locals())
 
 
 def profile(request):
@@ -79,3 +85,8 @@ def profile(request):
 def logoutuser(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def comment(request):
+    if request.method == 'GET':
+        text = request.GET.get('nick')
+    return render(request, 'comments.html',context=locals())
