@@ -17,7 +17,9 @@
     margin-top: 3%;
     font-family: Montserrat;
 }
-
+h3{
+    font-family: Montserrat;
+}
 #index_img_arrow{
     animation: bobble 1.4s infinite;
 }
