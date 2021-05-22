@@ -9,6 +9,9 @@ class Users(models.Model):
     date_create = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(null=True, blank=True, auto_now=True)
 
+    def __str__(self):
+        return self.login
+
 
 class CategoriesOfIngredients(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование категории', unique=True)
@@ -19,8 +22,14 @@ class Ingredients(models.Model):
     categoryOfIngredient = models.ForeignKey(CategoriesOfIngredients, on_delete=models.DO_NOTHING, verbose_name='Наименование категории ингредиента', null=True, blank=True)
 
 
+    def __str__(self):
+        return self.name
+
 class CategoriesOfDishes(models.Model):
     name = models.CharField(max_length=255, verbose_name='Категория', unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Recipes(models.Model):
@@ -35,10 +44,16 @@ class Recipes(models.Model):
     favourites = models.ManyToManyField(Users, verbose_name='Сохраненный рецепт', null=True, blank=True)
 
 
+    def __str__(self):
+        return self.title
+
 class recipesIngredients(models.Model):
     ingredients = models.ForeignKey(Ingredients, verbose_name='Ингредиенты в рецепте', on_delete=models.DO_NOTHING)
     recipes = models.ForeignKey(Recipes, verbose_name='Id Рецепта', on_delete=models.CASCADE)
     amount = models.CharField(max_length=64, verbose_name='Количество грамм ингредиента')
+
+    def __str__(self):
+        return self.recipes.title
 
 
 class Comments(models.Model):

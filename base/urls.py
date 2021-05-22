@@ -11,9 +11,9 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('authentication/', authentication, name='authentication'),
     path('logoutuser', logoutuser, name='logoutuser'),
-    path('profile/', profile, name='profile'),
+    re_path(r'^profile/(\d+)', profile, name='profile'),
     path('select_ingredients/', all_recipes, name='allRecipes'),
-    re_path('comment/$', comment, name='comment'),
+    path('comment/', comment, name='comment'),
     re_path(r'^recipe/(\d+)', recipe, name='recipe'),
 ] + staticfiles_urlpatterns()
 

@@ -8,34 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
-
-{#<body>#}
-{#<form action="" method="post">#}
-{#    {% csrf_token %}#}
-{#    {{ form.as_p }}#}
-{#</form>#}
-{##}
-{#{% if messages %}#}
-{#    {% for message in messages %}#}
-{#        {% if message.tags == 'error' %}#}
-{#            <div class="alert alert-danger" role="alert">#}
-{#                {{ message }}#}
-{#            </div>#}
-{#        {% else %}#}
-{#            <div class="alert alert-{{ message.tags }}" role="alert">#}
-{#                {{ message }}#}
-{#            </div>#}
-{#        {% endif %}#}
-{#    {% endfor %}#}
-{#{% endif %}#}
-{##}
-{#<a href="{% url 'home' %}">#}
-{#    <input type="image" src="../media/cross1.png" id="reg_button_close"#}
-{#           style="outline: none; border-color: transparent; box-shadow: none; ">#}
-{#</a>#}
-{#<br>#}
 <p><a href="{% url 'logoutuser' %}">Выход</a></p>
-
 
 <body style="background-image: url('../media/profile_image.png'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
         <div class="container">
@@ -62,13 +35,13 @@
                                 <img src="../media/user_icon.png" style="margin-top: 5%;" alt="">
                                 <input type="text"
                                     style="border-color: black; ;margin-top: 5%; background-color: transparent;border-radius: 51px;"
-                                    placeholder="Ник" class="form-control">
+                                    placeholder="Ник" class="form-control" value="{{ profileForm.0.login }}">
                                 <input class="form-control"
                                     style="border-color: black; margin-top: 5%;background-color: transparent;border-radius: 51px;"
-                                    placeholder="E-mail" type="email">
+                                    placeholder="E-mail" type="email" value="{{ profileForm.0.email }}">
                                 <input class="form-control"
-                                    style="border-color: black;margin-top: 5%;background-color: transparent;border-radius: 51px;"
-                                    placeholder="Пароль" type="password">
+                                    style="border-color: black;margin-top: 5%;background-color: transparent;border-radius: 51px; "
+                                    placeholder="Пароль" type="password" value="{{ profileForm.0.password }}">
                                 <input class="btn btn-lg" style="box-shadow: unset;" value="Редактировать профиль"
                                     type="submit">
                             </div>
