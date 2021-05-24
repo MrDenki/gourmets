@@ -21,16 +21,16 @@
                 
 
             </div>
-            <div class="col-9 text-center">
+            <div class="col-8 text-center">
                 <h1 style="font-family: Playfair Display;">Выберете категорию и ингридиенты</h1>
                 <input type="search" class="form-control form-control-lg"
                        style="margin-top: 10%; background-color: transparent; border-radius: 32px; border-color: black;">
             
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}"><h4 style="color: black;">{{ user.username }}</h4></a>
+                    <a href="{% url 'profile' user.id %}"><h4 style="color: black;">{{ user.username }}</h4></a>
 
                 {% else %}
                     <a href="{% url 'registration' %}"><h4 style="color: black;">Регистрация</h4></a>

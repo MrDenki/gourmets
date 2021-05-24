@@ -58,6 +58,7 @@ def authentication(request):
             messages.error(request, 'Неверно введены данные!')
     return render(request, 'index.html', context=locals())
 
+
 # @login_required() погуглить как использовать
 def all_recipes(request):
     reipes = Recipes.objects.all()
@@ -70,9 +71,10 @@ def recipe(request, id):
     coment = Comments.objects.filter(recipes_id=id)
     return render(request, 'recipe.html', context=locals())
 
+
 @login_required()
 def profile(request, id):
-    profileForm = Users.objects.filter(id=id) # ProfileFrom()
+    profileInfo = Users.objects.get(id=id) # ProfileFrom()
     return render(request, 'profile.html', context=locals())
 
 
@@ -81,13 +83,18 @@ def logoutuser(request):
     return HttpResponseRedirect('/')
 
 
+@login_required()
 def comment(request):
-    userComment = Comments()
+    userComment = Comments.objects.all()
     # coment = Comments.objects.all()
     if request.method == 'POST':
         userComment.content = request.POST.get('i2')
-        userComment.recipes_id = 40
-        userComment.user_id = 1
+        userComment.recipes_id = 1
+        userComment.user_id = 18
         userComment.save()
-    return redirect('recipe', 1)
-    # return render(request, 'recipe.html', context=locals())
+    # return redirect('recipe', 1)
+    return render(request, 'recipe.html', context=locals())
+
+
+def about_us(request):
+    return render(request, 'about_us.html', context=locals())

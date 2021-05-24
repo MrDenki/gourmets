@@ -13,11 +13,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <a href="{{ 'index' }}"><img src="../media/label.png" alt=""></a>
-                    <a href="{% url 'allRecipes' %}" style="text-decoration: none; color: black;font-family: Playfair Display;"><h4>Назад к рецептам</h4></a>
+                    <a href="{% url 'allRecipes' %}"><img src="../media/label.png" alt=""></a>
                 </div>
                 <div class="col-6 text-center" style="margin-top: 4%;">
                     <h1 style="color: black; font-family: Playfair Display;">Профиль</h1>
+                </div>
+                <div class="col-3">
+                    <a href="{% url 'logoutuser' %}" style="text-decoration: none; color: black;font-family: Playfair Display;"><h4>выйти из профиля</h4></a>
                 </div>
             </div>
         </div>
@@ -35,13 +37,13 @@
                                 <img src="../media/user_icon.png" style="margin-top: 5%;" alt="">
                                 <input type="text"
                                     style="border-color: black; ;margin-top: 5%; background-color: transparent;border-radius: 51px;"
-                                    placeholder="Ник" class="form-control" value="{{ profileForm.0.login }}">
+                                    placeholder="Ник" class="form-control" value="{{ profileInfo.login }}">
                                 <input class="form-control"
                                     style="border-color: black; margin-top: 5%;background-color: transparent;border-radius: 51px;"
-                                    placeholder="E-mail" type="email" value="{{ profileForm.0.email }}">
+                                    placeholder="E-mail" type="email" value="{{ profileInfo.email }}">
                                 <input class="form-control"
                                     style="border-color: black;margin-top: 5%;background-color: transparent;border-radius: 51px; "
-                                    placeholder="Пароль" type="password" value="{{ profileForm.0.password }}">
+                                    placeholder="Пароль" type="password" value="{{ profileInfo.password }}">
                                 <input class="btn btn-lg" style="box-shadow: unset;" value="Редактировать профиль"
                                     type="submit">
                             </div>
@@ -69,7 +71,5 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
 
-
 </body>
-
 </html>

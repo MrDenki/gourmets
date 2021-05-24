@@ -83,13 +83,11 @@
     </div>
 </div>
 
-
-
 <body style="background-image: url('../media/main_image.jpg'); background-size: cover; background-repeat: no-repeat; height: 100vh;">
 <div class="container">
     <div class="row">
         <div class="col-1">
-            <a href="{{ 'index' }}"><img src="../media/label.png" alt=""></a>
+            <img src="../media/label.png" alt="">
         </div>
         <div class="col-6"></div>
         <div class="col m-md-1">
@@ -104,7 +102,7 @@
         <div class="col m-md-1">
             <a class="btn btn-outline-warning btn-light"
                style="border-radius: 12rem; box-shadow: none; border-color: transparent; color: black;"
-               href="{{ 'index' }}">О нас</a>
+               href="{% url 'about_us' %}">О нас</a>
         </div>
 
         <div class="col p-md-1">

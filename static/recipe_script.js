@@ -21,5 +21,4 @@ function sendRequest(e) {
     request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8")
     request.onreadystatechange = reqReadyStateChange;
     request.send(sends);
-
 }
