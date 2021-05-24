@@ -19,6 +19,7 @@
 }
 h3{
     font-family: Montserrat;
+    color: black;
 }
 #index_img_arrow{
     animation: bobble 1.4s infinite;
