@@ -17,7 +17,7 @@
     <div class="container text-center">
         <div class="row" style="margin-top: 2%;">
             <div class="col-2">
-                <a href="{% url 'home' %}"><img src="../media/label.png" alt=""></a>
+                <a href="{% url 'home' %}"><img src="../media/label_2.png" alt=""></a>
                 
 
             </div>
@@ -28,12 +28,11 @@
             
             </div>
             <div class="col-2">
-                
                 {% if user.is_authenticated %}
-                    <a href="{% url 'profile' user.id %}"><h4 style="color: black;">{{ user.username }}</h4></a>
+                    <a style="text-decoration: none;" href="{% url 'profile' %}"><h4 style="font-family: Playfair Display;color: black;">{{ user.username }}</h4></a>
 
                 {% else %}
-                    <a href="{% url 'registration' %}"><h4 style="color: black;">Регистрация</h4></a>
+                    <a style="text-decoration: none;" href="{% url 'registration' %}"><h4 style="font-family: Playfair Display;color: black;">Регистрация</h4></a>
                 {% endif %}
             </div>
         </div>
@@ -59,7 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-3" style="margin-top: 3%; background-color: rgba(253, 133, 63, 0.726);">
-                <h3>Рецепты:</h3>
+                <h3 style="font-family: Playfair Display;">Рецепты:</h3>
             </div>
         </div>
         <div class="row">

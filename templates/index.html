@@ -8,11 +8,12 @@
     <title>ЯГурман</title>
     <link rel="stylesheet" type="text/css" href="../static/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800" rel="stylesheet">
 </head>
 
 <div class="modal fade" style="background-color: rgba(0, 0, 0, 0.835); display: none;" id="modal_form" tabindex="-1"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class=" modal-dialog modal-dialog-centered ">
         <div class="modal-content" style="background-color: transparent;">
             <div class=" modal-body">
@@ -21,11 +22,12 @@
                         <div class="col-1"></div>
 
                         <div class="col-10 text-center">
-                            <h2 style="margin-bottom: 7%; color: #FFFFFF; font-family: Montserrat; font-style: normal; font-weight: normal; text-transform: uppercase; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                            <h2
+                                style="margin-bottom: 7%;margin-top: 3%; color: #FFFFFF; font-family: Montserrat; font-style: normal; font-weight: normal; text-transform: uppercase; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
                                 Авторизация</h2>
 
                             <form action="{% url 'authentication' %}" method="POST">
-                                {% csrf_token %}
+                                <!-- {% csrf_token %}
                                 {% if messages %}
                                     {% for message in messages %}
                                         {% if message.tags == 'error' %}
@@ -38,16 +40,18 @@
                                             </div>
                                         {% endif %}
                                     {% endfor %}
-                                {% endif %}
+                                {% endif %} -->
 
-                                <input name="username" type="text" class="form-control" id="index_input_username" placeholder="Имя"
-                                       style="margin-bottom: 9%; margin-top: 3%; font-family: Montserrat;">
+                                <input name="username" type="text" class="form-control" id="index_input_username"
+                                    placeholder="E-Mail"
+                                    style="margin-bottom: 9%; margin-top: 3%; font-family: Montserrat;">
 
-                                <input name="password" type="password" class="form-control" style="font-family: Montserrat;"
-                                       id="index_input_password" placeholder="Пароль">
+                                <input name="password" type="password" class="form-control"
+                                    style="font-family: Montserrat;" id="index_input_password" placeholder="Пароль">
 
                                 <button type="button" id="index_button_forgotpass" class="btn"
-                                        style="margin-top: 3%;margin-bottom: 3%; text-decoration-line: underline; box-shadow: unset; font-family: Montserrat;">Забыли пароль?</button>
+                                    style="margin-top: 3%;margin-bottom: 3%; text-decoration-line: underline; box-shadow: unset; font-family: Montserrat;">Забыли
+                                    пароль?</button>
 
 
                                 <div class="col-1"></div>
@@ -56,8 +60,8 @@
                                     <div class="col-1"></div>
                                     <div class="col-10 text-center">
                                         <button type="submit" id="index_button_enter"
-                                                style=" margin-bottom: 7%; color: white; border-radius: 7%; font-family: Montserrat; border-color: white; box-shadow: none; "
-                                                class="btn btn-outline-danger btn-lg btn-block col-7">Войти</button>
+                                            style=" margin-bottom: 7%; color: white; border-radius: 7%; font-family: Montserrat; border-color: white; box-shadow: none; "
+                                            class="btn btn-outline-danger btn-lg btn-block col-7">Войти</button>
                                     </div>
                                     <div class="col-1"></div>
                                 </div>
@@ -73,8 +77,10 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <a class="btn btn-lg btn-warning col-7" href="{% url 'registration' %}"
-                               style="font-family: Montserrat; margin-top: 5%; background-color:#ffffffd2 ; color: #000; border-color: transparent;border-radius: 15px;"><h4>Регистрация</h4></a>
+                            <a class="btn btn-outline-warning btn-light btn-lg  col-7" href="{% url 'registration' %}"
+                                style="font-family: Montserrat;margin-top: 5%; color: #000; border-color: transparent;border-radius: 36px;">
+                                <h5 style="font-family: Montserrat;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);margin-top: 1%;font-weight: 200;">РЕГИСТРАЦИЯ</h5>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -83,68 +89,74 @@
     </div>
 </div>
 
-<body style="background-image: url('../media/main_image.jpg'); background-size: cover; background-repeat: no-repeat; height: 100vh;">
-<div class="container">
-    <div class="row">
-        <div class="col-1">
-            <img src="../media/label.png" alt="">
-        </div>
-        <div class="col-6"></div>
-        <div class="col m-md-1">
-        </div>
 
-        <div class="col m-md-1">
-            <a class="btn btn-outline-warning btn-light"
-               style="border-radius: 12rem;box-shadow: none; border-color: transparent; color: black;"
-               href="{% url 'allRecipes' %}">Рецепты</a>
-        </div>
 
-        <div class="col m-md-1">
-            <a class="btn btn-outline-warning btn-light"
-               style="border-radius: 12rem; box-shadow: none; border-color: transparent; color: black;"
-               href="{% url 'about_us' %}">О нас</a>
-        </div>
+<body
+    style="background-image: url('../media/main_image.jpg'); background-size: cover; background-repeat: no-repeat; height: 100vh;">
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <a href="{{ 'index' }}"><img src="../media/label_2.png" alt=""></a>
+            </div>
+            <div class="col-6"></div>
+            <div class="col m-md-1">
+            </div>
 
-        <div class="col p-md-1">
-            {% if user.is_authenticated %}
+            <div class="col m-md-1">
+                <a class="btn btn-outline-warning btn-light"
+                    style="border-radius: 12rem;box-shadow: none; border-color: transparent; color: black;"
+                    href="{% url 'allRecipes' %}">Рецепты</a>
+            </div>
+
+            <div class="col m-md-1">
+                <a class="btn btn-outline-warning btn-light"
+                    style="border-radius: 12rem; box-shadow: none; border-color: transparent; color: black;"
+                    href="{{ 'index' }}">О нас</a>
+            </div>
+
+            <div class="col p-md-1">
+                {% if user.is_authenticated %}
                 <a href="{% url 'profile' user.id %}" class="btn btn-outline-warning btn-light "
-                   style="border-radius: 12rem; border-color: transparent; color: black;">{{ user.username }}</a>
-            {% else %}
+                    style="border-radius: 12rem; border-color: transparent; color: black;">{{ user.username }}</a>
+                {% else %}
                 <a type="button" data-bs-toggle="modal" data-bs-target="#modal_form"
-                   class="btn btn-outline-warning btn-light "
-                   style="border-radius: 12rem; border-color: transparent; color: black;">Вход</a>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="container col-xl-8  " style="margin-top:12% ; background: rgba(255, 255, 255, 0.7) ">
-    <div class="row">
-        <div class="col">
-            <h1 style="font-family: Playfair Display; font-size: 3.5rem;" class="text-center ">Найди свой рецепт</h1>
+                    class="btn btn-outline-warning btn-light "
+                    style="border-radius: 12rem; border-color: transparent; color: black;">Вход</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <h4 style="font-family: Playfair Display;" class="text-center">ДОБРО ПОЖАЛОВАТЬ НА ЯГУРМАН!
-            </h4>
-            <h4 style="font-family: Playfair Display" class="text-center">ИСПЫТАЙ ПРЯМО СЕЙЧАС!</h4>
+    <div class="container col-xl-8  " style="margin-top:12% ; background: rgba(255, 255, 255, 0.7) ">
+        <div class="row">
+            <div class="col">
+                <h1 style="font-family: Playfair Display; font-size: 3.5rem;" class="text-center ">Найди свой рецепт
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h4 style="font-family: Playfair Display;" class="text-center">ДОБРО ПОЖАЛОВАТЬ НА ЯГУРМАН!
+                </h4>
+                <h4 style="font-family: Playfair Display" class="text-center">ИСПЫТАЙ ПРЯМО СЕЙЧАС!</h4>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container mt-3">
-    <div class="row text-center">
-        <div class="col m-lg-5">
-            <a href="{% url 'allRecipes' %}">
-                <button type="button" class="btn btn-warning btn-lg col-xl-4">Попробовать</button> {#  data-bs-toggle="modal" data-bs-target="#modal_form" #}
-            </a>
+    <div class="container mt-3">
+        <div class="row text-center">
+            <div class="col m-lg-5">
+                <a href="{% url 'allRecipes' %}">
+                    <button type="button" style="background-color: #F0742A; border: none;"
+                        class="btn btn-warning btn-lg col-xl-4">Попробовать</button> {# data-bs-toggle="modal"
+                    data-bs-target="#modal_form" #}
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
 
