@@ -7,19 +7,23 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800" rel="stylesheet">
 </head>
 
 <body style="background-image: url('../media/profile_image.png'); height: 100vh; background-size: cover; background-repeat: no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <a href="{{ 'index' }}"><img src="../media/label.png" alt=""></a>
+                    <a href="{% url 'home' %}"><img src="../media/label.png" alt=""></a>
                 </div>
                 <div class="col-6 text-center" style="margin-top: 4%;">
                     <h1 style="color: black; font-family: Playfair Display;">Профиль</h1>
                 </div>
                 <div class="col-3">
-                    <a href="{% url 'logoutuser' %}" style="text-decoration: none; color: black;font-family: Playfair Display;"><h4>выйти из профиля</h4></a>
+                    <a href="{% url 'logoutuser' %}" style="text-decoration: none; color: black;font-family: Playfair Display;">
+                        <button class="btn btn-lg  btn-outline-light" style="margin-top: 5%; color: black;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-color: transparent; border-radius: 26px; background:#E4EFD2" type="button">Выйти из профиля</button>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -43,7 +47,7 @@
                                     placeholder="E-mail" type="email" value="{{ profileInfo.email }}">
                                 <input class="form-control"
                                     style="border-color: black;margin-top: 5%;background-color: transparent;border-radius: 51px; "
-                                    placeholder="Пароль" type="password" value="{{ profileForm.0.password }}">
+                                    placeholder="Пароль" type="password" value="{{ profileInfo.password }}">
                                 <a class="btn btn-lg" style="box-shadow: unset;" href="{% url 'logoutuser' %}"><h5>Выйти из профиля</h5></a>
                             </div>
                             <div class="col-1"></div>

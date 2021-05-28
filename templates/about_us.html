@@ -9,9 +9,10 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800" rel="stylesheet">
 </head>
 
-<body style="background-image: url(../media/main_img_ab_us.png); height: 25vh; background-repeat: no-repeat;">
+<body style="background-image: url(../media/main_img_ab_us.png); background-size: cover; height: 25vh; background-repeat: no-repeat;">
     <div class="container" style="margin-top: 2%;">
         <div class="row">
             <div class="col-4"></div>
@@ -22,7 +23,7 @@
             <div class="col-1">
                 <a class="btn btn-outline-warning btn-light"
                     style="border-radius: 12rem;box-shadow: none; border-color: transparent; color: black;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"
-                    href="{{ 'index' }}">Главная</a>
+                    href="{% url 'home' %}">Главная</a>
             </div>
         </div>
 
@@ -49,33 +50,10 @@
     </div>
 </div>
 
-<div class="container" style="margin-top: 10%;">
-    <div class="row">
-        <div class="col-3">
-            <h1 style="font-family: Playfair Display; font-weight: bolder">Денисенко Кирилл</h1>
-            <h5 style="font-family: Playfair Display;">Back-end разработчик</h5>
-        </div>
-        <div class="col-2"></div>
-        <div class="col-2">
-            <h1 style="font-family: Playfair Display; font-weight: bolder">Гусев Даниил</h1>
-            <h5 style="font-family: Playfair Display;">Front-end разработчик</h5>
-
-                <img src="../media/ins_zinger.tw.png" alt="">
-
-            </div>
-            <div class="col-2"></div>
-            <div class="col-3">
-                <img src="../media/ins_kimlerr.png" alt="">
-                
-
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container" style="margin-top: 3%;" >
     <div class="row">
         <div class="col-3">
+            <a href="https://www.instagram.com/mr.denki/?hl=ru"><img src="../media/ins_mr.denki.png" alt=""></a>
         </div>
         <div class="col-2"></div>
         <div class="col-2">

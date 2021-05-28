@@ -27,20 +27,8 @@
                                 Авторизация</h2>
 
                             <form action="{% url 'authentication' %}" method="POST">
-                                <!-- {% csrf_token %}
-                                {% if messages %}
-                                    {% for message in messages %}
-                                        {% if message.tags == 'error' %}
-                                            <div class="alert alert-danger" role="alert">
-                                                {{ message }}
-                                            </div>
-                                        {% else %}
-                                            <div class="alert alert-{{ message.tags }}" role="alert">
-                                                {{ message }}
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %} -->
+                                 {% csrf_token %}
+
 
                                 <input name="username" type="text" class="form-control" id="index_input_username"
                                     placeholder="E-Mail"
@@ -111,7 +99,7 @@
             <div class="col m-md-1">
                 <a class="btn btn-outline-warning btn-light"
                     style="border-radius: 12rem; box-shadow: none; border-color: transparent; color: black;"
-                    href="{{ 'index' }}">О нас</a>
+                    href="{% url 'about_us' %}">О нас</a>
             </div>
 
             <div class="col p-md-1">
@@ -149,8 +137,7 @@
             <div class="col m-lg-5">
                 <a href="{% url 'allRecipes' %}">
                     <button type="button" style="background-color: #F0742A; border: none;"
-                        class="btn btn-warning btn-lg col-xl-4">Попробовать</button> {# data-bs-toggle="modal"
-                    data-bs-target="#modal_form" #}
+                        class="btn btn-warning btn-lg col-xl-4">Попробовать</button>  {# data-bs-toggle="modal" data-bs-target="#modal_form" #}
                 </a>
             </div>
         </div>

@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800" rel="stylesheet">
 </head>
 
 <body
-        style="background-image: url(../media/back_ingred.png); background-size: cover; background-repeat: no-repeat; height: 100vh;">
+        style="background-image: url(../media/back_recipes.png); background-size: cover; background-repeat: no-repeat; height: 100vh;">
 <form name="si_form">
     <div class="container text-center">
         <div class="row" style="margin-top: 2%;">
@@ -23,16 +24,20 @@
             </div>
             <div class="col-8 text-center">
                 <h1 style="font-family: Playfair Display;">Выберете категорию и ингридиенты</h1>
-                <input type="search" class="form-control form-control-lg"
-                       style="margin-top: 10%; background-color: transparent; border-radius: 32px; border-color: black;">
-            
+                <form action="{% url 'allRecipes' %}" method="get">
+                    <input name="search" type="search" autocomplete="off" class="form-control form-control-lg"
+                       style="margin-top: 10%; background-color: transparent; border-radius: 32px; border-color: black;" placeholder="Поиск...">
+                    <button style="margin-top: 3%; font-family: Montserrat; border-radius: 10rem; box-shadow: #FFFFFF; background-color: rgba(253, 133, 63, 0.726); border-color: transparent; color: black;">
+                         Поиск</button>
+                </form>
+
             </div>
             <div class="col-2">
                 {% if user.is_authenticated %}
-                    <a style="text-decoration: none;" href="{% url 'profile' %}"><h4 style="font-family: Playfair Display;color: black;">{{ user.username }}</h4></a>
+                    <a class="btn btn-light" style="background-color: rgba(253, 133, 63, 0.726); text-decoration: none; border-radius: 40px;" href="{% url 'profile' user.id %}"><h4 style="font-family: Playfair Display;color: black;">{{ user.username }}</h4></a>
 
                 {% else %}
-                    <a style="text-decoration: none;" href="{% url 'registration' %}"><h4 style="font-family: Playfair Display;color: black;">Регистрация</h4></a>
+                    <a class="btn btn-light" style="background-color: rgba(255, 255, 255, 0.5);text-decoration: none;border-radius: 40px; box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);" href="{% url 'registration' %}"><h4 style="font-family: Montserrat;color: black;">Регистрация</h4></a>
                 {% endif %}
             </div>
         </div>
@@ -70,21 +75,33 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" style="margin-bottom: 5%">
         <div class="row">
-            <div class="col-12 text-center">
-                <div>
-
-                    {% for foo in reipes %}
-                        <p><img src="{{ foo.picture }}" class="img-fluid" alt="" style="width: 50%"></p>
-                        <h3><a href="{% url 'recipe' foo.id %}">{{ foo.title }}</a></h3>
-                        <p>{{ foo.describe }}</p>
-                    {% endfor %}
-
-                </div>
+            <div class="col-1" style="background-color: rgba(253, 133, 63, 0.726);">
+                <h5>Блюдо:</h5>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-2" style="background-color: rgba(253, 133, 63, 0.726); ">
+                <h5>Описание:</h5>
             </div>
         </div>
     </div>
+     {% for foo in reipes %}
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p><img src="{{ foo.picture }}"  class="img-fluid" alt="" style="width: 100%;border-radius: 43px;margin-bottom: 15% "></p>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-7">
+                    <h3><a style="text-decoration: none;color: black;font-family: Montserrat;" href="{% url 'recipe' foo.id %}">{{ foo.title }}</a></h3>
+                    <img src="../media/line.png" style="border-radius: 20px; margin-top: -2.5%" alt="">
+                            <p style="height: 120px; overflow: hidden">{{ foo.describe }}</p>
+                    <img src="../media/line.png" style="border-radius: 20px" alt="">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>

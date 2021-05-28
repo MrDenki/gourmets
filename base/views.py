@@ -1,8 +1,11 @@
+import json
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core import serializers
 from django.core.mail import send_mail
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
@@ -61,7 +64,11 @@ def authentication(request):
 
 # @login_required() погуглить как использовать
 def all_recipes(request):
-    reipes = Recipes.objects.all()
+    result = request.GET.get('search','')
+    if  result:
+        reipes = Recipes.objects.filter(title__icontains=result)
+    else:
+        reipes = Recipes.objects.all()
     return render(request, 'select_ingredients.html', context=locals())
 
 
@@ -85,15 +92,16 @@ def logoutuser(request):
 
 @login_required()
 def comment(request):
-    userComment = Comments.objects.all()
-    # coment = Comments.objects.all()
     if request.method == 'POST':
-        userComment.content = request.POST.get('i2')
-        userComment.recipes_id = 1
-        userComment.user_id = 18
-        userComment.save()
-    # return redirect('recipe', 1)
-    return render(request, 'recipe.html', context=locals())
+        user_comment = request.POST.get('comment')
+        rec_id = request.POST.get('id')
+        user = Users.objects.filter(login=request.user.username)[0]
+
+        content = Comments.objects.create(user=user, recipes_id=int(rec_id), content=user_comment)
+        added_comment = { 'user': content.user.login,
+                          'content': content.content
+                         }
+        return JsonResponse(added_comment)
 
 
 def about_us(request):

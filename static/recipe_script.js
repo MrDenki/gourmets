@@ -1,14 +1,20 @@
-var form = document.form_test;
-var btn = form.sended;
-alert()
-btn.addEventListener("click", sendRequest);
-function sendRequest(e) {
-    e.preventDefault();
-    
+function SendComment(obj, id) {
+    let comment = $("#comment").val()
+    if (comment != '') {
+        $.ajax({
+            url: '/comment/',
+            type: 'POST',
+            data: {
+                'comment': comment,
+                'id': id
+            },
+            success: function (response) {
+                $('.print-comments').append('<div>\n' +
+                    '                            <h4 style="font-family: Roboto; margin-left: 1%; margin-right: 1%; ">'+response['user']+'</h4>\n' +
+                    '                            <p style="font-family: Roboto; margin-left: 1%; margin-right: 1%;">'+response['content']+'</p>\n' +
+                    '                        </div>')
+                $("#comment").val('')
+            }
+        })
     }
-    var sends = "nick="+mes.nick + "text="+mes.text;
-    request.open("POST","127.0.0.1:8000");
-    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8")
-    request.onreadystatechange = reqReadyStateChange;
-    request.send(sends);
 }
